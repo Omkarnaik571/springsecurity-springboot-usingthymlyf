@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+<title>Registration</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+			</div>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h3>Create Policy:</h3>
+				<form th:action="@{/save-policy}" th:object="${policy}"
+					method="post">
+					<div class="form-group">
+						<label class="control-label">Client </label> <select
+							class="form-control" th:field="*{client}">
+							<option th:each="p : ${clientNameList}" th:value="${p}"
+								th:text="${p}" />
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Insurance Type : </label> <select
+							class="form-control" th:field="*{insuranceType}">
+							<option value="Term insurance Policy">Term insurance
+								Policy</option>
+							<option value="Whole Life insurance Policy">Whole Life
+								insurance Policy</option>
+							<option value="Money Back policy">Money Back policy</option>
+							<option value="Endowment Policy">Endowment Policy</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="firstName" class="control-label">First Name</label> <input
+							id="firstName" class="form-control" th:field="*{firstName}" />
+					</div>
+					<div class="form-group">
+						<label for="lastName" class="control-label">Last Name</label> <input
+							id="lastName" class="form-control" th:field="*{lastName}" />
+					</div>
+					<div class="form-group">
+						<label for="emailId" class="control-label">Email Id</label> <input
+							id="emailId" class="form-control" th:field="*{emailId}" />
+					</div>
+					<div class="form-group">
+						<label for="age" class="control-label">Age</label> <input id="age"
+							class="form-control" th:field="*{age}" />
+					</div>
+					<div class="form-group">
+						<label for="mobileNumber" class="control-label">Mobile
+							Number</label> <input id="mobileNumber" class="form-control"
+							th:field="*{mobileNumber}" />
+					</div>
+					<div class="form-group">
+						<label for="gender" class="control-label">Gender</label> <input
+							type="radio" th:field="*{gender}" value="Male" />Male <input
+							type="radio" th:field="*{gender}" value="Female" />Female
+					</div>
+					<div class="form-group">
+						<label for="consumeTobaco" class="control-label">Consume
+							Tobaco</label> <input id="consumeTobaco" class="form-control"
+							th:field="*{consumeTobaco}" />
+					</div>
+					<div class="form-group">
+						<label for="annualIncome" class="control-label">Annual
+							Income</label> <input id="annualIncome" class="form-control"
+							th:field="*{annualIncome}" />
+					</div>
+					<div class="form-group">
+						<label for="lifeCoverAmount" class="control-label">Life
+							Cover Amount</label> <input id="lifeCoverAmount" class="form-control"
+							th:field="*{lifeCoverAmount}" />
+					</div>
+					<div class="form-group">
+						<label for="lifeCoverUptoAge" class="control-label">Life
+							Cover Upto Age</label> <input id="lifeCoverUptoAge" class="form-control"
+							th:field="*{lifeCoverUptoAge}" />
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-success">Create
+							Policy</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+<title>Insert title here</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<div style="margin-top: 20px">
+		<h3>Policy List:</h3>
+	</div>
+	<table class="table table-striped">
+
+		<thead>
+			<tr>
+				<th style="width: 100px;">Id</th>
+				<th style="width: 100px;">Insurance Type</th>
+				<th style="width: 100px;">Client</th>
+				<th style="width: 100px;">First Name</th>
+				<th style="width: 100px;">Last Name</th>
+				<th style="width: 100px;">E-Mail Id</th>
+				<th style="width: 100px;">Age</th>
+				<th style="width: 100px;">Mobile Number</th>
+				<th style="width: 100px;">Gender</th>
+				<th style="width: 100px;">Consume Tobaco</th>
+				<th style="width: 100px;">Annual Income</th>
+				<th style="width: 100px;">Life Cover Amount</th>
+				<th style="width: 100px;">Life Cover Upto Age</th>
+				<th style="width: 100px;">Cancel Policy</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="policy : ${policyList}">
+				<td class="align-middle" th:text="${policy.id}"></td>
+				<td class="align-middle" th:text="${policy.insuranceType}"></td>
+				<td class="align-middle" th:text="${policy.client}"></td>
+				<td class="align-middle" th:text="${policy.firstName}"></td>
+				<td class="align-middle" th:text="${policy.lastName}"></td>
+				<td class="align-middle" th:text="${policy.emailId}"></td>
+				<td class="align-middle" th:text="${policy.age}"></td>
+				<td class="align-middle" th:text="${policy.mobileNumber}"></td>
+				<td class="align-middle" th:text="${policy.gender}"></td>
+				<td class="align-middle" th:text="${policy.consumeTobaco}"></td>
+				<td class="align-middle" th:text="${policy.annualIncome}"></td>
+				<td class="align-middle" th:text="${policy.lifeCoverAmount}"></td>
+				<td class="align-middle" th:text="${policy.lifeCoverUptoAge}"></td>
+				<td class="align-middle">
+					<form th:action="@{/delete}" method="post">
+						<input type="hidden" name="id" th:value="${policy.id}" /> <input
+							type="submit" value="Cancel" class="btn btn-danger" />
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
